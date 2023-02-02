@@ -14,7 +14,6 @@ public class FuelServicesTests extends BaseTest{
         BasesLocationDetailsPage basesLocationDetailsPage = new BasesLocationDetailsPage(driver);
         String value = basesLocationDetailsPage.copyBaseAddress();
         Assertions.assertEquals("ul. Naftowa 1, 95-040 Koluszki, powiat łódzki-wschodni, województwo łódzkie", value, "String value is not the same as needed");
-        Thread.sleep(3000);
     }
     @Test
     public void goToFuelsPageAndClickOnKoluszkiBase(){
