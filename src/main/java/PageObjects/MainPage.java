@@ -61,6 +61,7 @@ public class MainPage extends BasePage{
         WebElement liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(telecommunicationTab));
         liquidFuelsTab.click();
         return new TelecomunicationServicesPage(driver);
+        //test comment for PM
 
     }
 
