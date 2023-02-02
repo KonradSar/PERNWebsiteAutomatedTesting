@@ -51,7 +51,6 @@ public class MainPage extends BasePage{
         WebElement laboratoryTabb = webDriverWait.until(ExpectedConditions.elementToBeClickable(laboratoryTab));
         Actions actions = new Actions(driver);
         actions.moveToElement(laboratoryTabb).click().build().perform();
-//        laboratoryTabb.click();
         return new LaboratoryServicesPage(driver);
 
     }
@@ -71,6 +70,14 @@ public class MainPage extends BasePage{
         WebElement liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(telecommunicationTab));
         liquidFuelsTab.click();
         return new TelecomunicationServicesPage(driver);
+    }
+    public HeaderPage clickOnSearcher(){
+        headerPage.clickOnSearchBtn();
+        return new HeaderPage(driver);
+    }
+    public HeaderPage typeInSomeText(String phrase){
+        headerPage.searchInSomeText(phrase);
+        return new HeaderPage(driver);
     }
 
 }

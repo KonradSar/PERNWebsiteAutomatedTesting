@@ -21,6 +21,14 @@ public class FuelServicesTests extends BaseTest{
         mainPage.goToFuelServicesPage().clickOnSelectedBase(774, 305, ".//a[@class = 'locations-map-list__url' and @href = 'https://www.pern.pl/obiekty/baza-paliw-nr-1-w-koluszkach/']");
         Assertions.assertEquals("https://www.pern.pl/obiekty/baza-paliw-nr-1-w-koluszkach/", driver.getCurrentUrl(), "URL of website is incorrect");
     }
+
+    @Test
+    public void searchPhraseInSearcherFromTheHeader() throws InterruptedException {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.clickOnSearcher().searchInSomeText("Usługi ochrony osób i mienia oraz ochrony przeciwpożarowej");
+        Assertions.assertEquals("https://www.pern.pl/?s=Us%C5%82ugi+ochrony+os%C3%B3b+i+mienia+oraz+ochrony+przeciwpo%C5%BCarowej", driver.getCurrentUrl(), "The URL is not correct");
+        Thread.sleep(3000);
+    }
     @Test
     public void goToLaboratoryPageAndCheckDieselFlashPointValue() throws InterruptedException {
         MainPage mainPage = new MainPage(driver);
