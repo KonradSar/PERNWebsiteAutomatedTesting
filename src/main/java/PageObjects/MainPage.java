@@ -1,6 +1,7 @@
 package PageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,7 +25,7 @@ public class MainPage extends BasePage{
         super(driver);
         headerPage = new HeaderPage(driver);
         footerPage = new FooterPage(driver);
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(7));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(17));
     }
     public FuelServicesPage goToFuelServicesPage(){
         WebElement liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(pernFuelsTab));
@@ -33,20 +34,20 @@ public class MainPage extends BasePage{
 
     }
     public OilServicesPage goToOilServicesPage(){
-        WebElement liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(oilTab));
-        liquidFuelsTab.click();
+        WebElement oilServicesTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(oilTab));
+        oilServicesTab.click();
         return new OilServicesPage(driver);
 
     }
     public LaboratoryServicesPage goToLaboratoryServicesPage(){
-        WebElement liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(laboratoryTab));
-        liquidFuelsTab.click();
+        WebElement laboratoryTabb = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(laboratoryTab));
+        laboratoryTabb.click();
         return new LaboratoryServicesPage(driver);
 
     }
     public CDOKServicesPage goToCDOKServicesPage(){
-        WebElement liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(cdokTab));
-        liquidFuelsTab.click();
+        WebElement cdokServicesTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(cdokTab));
+        cdokServicesTab.click();
         return new CDOKServicesPage(driver);
 
     }
