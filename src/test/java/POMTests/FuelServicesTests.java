@@ -14,7 +14,6 @@ public class FuelServicesTests extends BaseTest{
         BasesLocationDetailsPage basesLocationDetailsPage = new BasesLocationDetailsPage(driver);
         String value = basesLocationDetailsPage.copyBaseAddress();
         Assertions.assertEquals("ul. Naftowa 1, 95-040 Koluszki, powiat łódzki-wschodni, województwo łódzkie", value, "String value is not the same as needed");
-        Thread.sleep(3000);
     }
     @Test
     public void goToFuelsPageAndClickOnKoluszkiBase(){
@@ -23,14 +22,13 @@ public class FuelServicesTests extends BaseTest{
         Assertions.assertEquals("https://www.pern.pl/obiekty/baza-paliw-nr-1-w-koluszkach/", driver.getCurrentUrl(), "URL of website is incorrect");
     }
     @Test
-    public void goToLaboratoryPageAndCheckDieselFlashPointValue(){
+    public void goToLaboratoryPageAndCheckDieselFlashPointValue() throws InterruptedException {
         MainPage mainPage = new MainPage(driver);
-        mainPage.goToLaboratoryServicesPage();
+        mainPage.scrollToServicesTitle().goToLaboratoryServicesPage();
         LaboratoryServicesPage laboratoryServicesPage = new LaboratoryServicesPage(driver);
         laboratoryServicesPage.goToFuelsAndBiocomponentsRequirementsPage();
         FuelsAndBiocomponentsRequirementsPage fuelsAndBiocomponentsRequirementsPage = new FuelsAndBiocomponentsRequirementsPage(driver);
         fuelsAndBiocomponentsRequirementsPage.clickOnDieseBtn().scrollToFlashPointTableValue();
-
     }
     @Test
     public void goToYoutubeWebPage() throws InterruptedException {

@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -30,9 +31,12 @@ public class FuelsAndBiocomponentsRequirementsPage extends BasePage{
         requirementsTab.click();
         return new FuelsAndBiocomponentsRequirementsPage(driver);
     }
-    public void scrollToFlashPointTableValue() {
+    public void scrollToFlashPointTableValue() throws InterruptedException {
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(flashPointTableValue));
         WebElement flashPointValue = driver.findElement(flashPointTableValue);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", flashPointValue);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(flashPointValue).doubleClick(flashPointValue).build().perform();
+        Thread.sleep(3000);
     }
 }

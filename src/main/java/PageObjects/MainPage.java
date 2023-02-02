@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,6 +20,8 @@ public class MainPage extends BasePage{
     private By cdokTab = By.xpath(".//a[@class = 'p-uslugi__item ended' and @href = 'https://www.pern.pl/uslugi/cdok/']/img");
     private By streamCalibrationsTab = By.xpath(".//a[@class = 'p-uslugi__item ended' and @href = 'https://www.pern.pl/uslugi/wzorcowanie-przeplywomierzy/']/img");
     private By telecommunicationTab = By.xpath(".//a[@class = 'p-uslugi__item ended' and @href = 'https://www.pern.pl/uslugi/telekomunikacja/']/img");
+
+    private By servicesSectionTitle = By.xpath(".//h2[@class='section__title']");
 
 
     public MainPage(WebDriver driver) {
@@ -39,9 +42,16 @@ public class MainPage extends BasePage{
         return new OilServicesPage(driver);
 
     }
+    public MainPage scrollToServicesTitle(){
+        WebElement servicesTitle = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(servicesSectionTitle));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", servicesTitle);
+        return new MainPage(driver);
+    }
     public LaboratoryServicesPage goToLaboratoryServicesPage(){
-        WebElement laboratoryTabb = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(laboratoryTab));
-        laboratoryTabb.click();
+        WebElement laboratoryTabb = webDriverWait.until(ExpectedConditions.elementToBeClickable(laboratoryTab));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(laboratoryTabb).click().build().perform();
+//        laboratoryTabb.click();
         return new LaboratoryServicesPage(driver);
 
     }
@@ -61,8 +71,6 @@ public class MainPage extends BasePage{
         WebElement liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(telecommunicationTab));
         liquidFuelsTab.click();
         return new TelecomunicationServicesPage(driver);
-        //test comment for PM
-
     }
 
 }

@@ -3,6 +3,7 @@ package PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -23,6 +24,8 @@ public class BasesLocationDetailsPage extends BasePage{
 
     public String copyBaseAddress(){
         WebElement addressRow = driver.findElement(locationOfBase);
+        Actions actions = new Actions(driver);
+        actions.doubleClick(addressRow).build().perform();
         String value = addressRow.getText();
         return value;
     }
