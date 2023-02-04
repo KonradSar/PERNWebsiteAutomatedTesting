@@ -2,7 +2,7 @@ package PageObjects;
 
 import org.openqa.selenium.WebDriver;
 
-public class BasePage {
+public abstract class BasePage {
     protected WebDriver driver;
 
     protected BasePage(WebDriver driver) {
