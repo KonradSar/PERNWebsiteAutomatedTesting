@@ -71,13 +71,14 @@ public class MainPage extends BasePage{
         liquidFuelsTab.click();
         return new TelecomunicationServicesPage(driver);
     }
-    public HeaderPage clickOnSearcher(){
+    public void clickOnSearcher(){
         headerPage.clickOnSearchBtn();
-        return new HeaderPage(driver);
     }
-    public HeaderPage typeInSomeText(String phrase){
+    public void typeInSomeText(String phrase){
         headerPage.searchInSomeText(phrase);
-        return new HeaderPage(driver);
+    }
+    public void clickOnYT(){
+        footerPage.clickOnYoutubeLogo();
     }
 
 }

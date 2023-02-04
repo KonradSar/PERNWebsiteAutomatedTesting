@@ -25,7 +25,8 @@ public class FuelServicesTests extends BaseTest{
     @Test
     public void searchPhraseInSearcherFromTheHeader() throws InterruptedException {
         MainPage mainPage = new MainPage(driver);
-        mainPage.clickOnSearcher().searchInSomeText("Usługi ochrony osób i mienia oraz ochrony przeciwpożarowej");
+        mainPage.clickOnSearcher();
+        mainPage.typeInSomeText("Usługi ochrony osób i mienia oraz ochrony przeciwpożarowej");
         Assertions.assertEquals("https://www.pern.pl/?s=Us%C5%82ugi+ochrony+os%C3%B3b+i+mienia+oraz+ochrony+przeciwpo%C5%BCarowej", driver.getCurrentUrl(), "The URL is not correct");
         Thread.sleep(3000);
     }
@@ -40,8 +41,8 @@ public class FuelServicesTests extends BaseTest{
     }
     @Test
     public void goToYoutubeWebPage() throws InterruptedException {
-        FooterPage footerPage = new FooterPage(driver);
-        footerPage.clickOnYoutubeLogo();
+        MainPage mainPage = new MainPage(driver);
+        mainPage.clickOnYT();
         YoutubePage youtubePage = new YoutubePage(driver);
         youtubePage.closeCookiesBtn();
         Assertions.assertEquals("https://www.youtube.com/channel/UCJnkxHoJhVynx-jXjv6OaRg", driver.getCurrentUrl(), "The url is not correct");
