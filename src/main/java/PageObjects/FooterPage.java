@@ -3,10 +3,11 @@ package PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class FooterPage extends BasePage{
+public class FooterPage extends BasePage {
     public FooterPage(WebDriver driver) {
         super(driver);
     }
+
     private By contactInvestorLink = By.xpath(".//li[@id = 'menu-item-2614']/a");
     private By securityInfoForLocalCommunityLink = By.xpath(".//li[@id = 'menu-item-7252']/a");
     private By rodoLink = By.xpath(".//li[@id = 'menu-item-2606']/a");
@@ -25,86 +26,90 @@ public class FooterPage extends BasePage{
     private By linkedInLogo = By.xpath(".//a[@href = 'https://www.linkedin.com/company/pern-s-a/']/img");
     private By twitterLogo = By.xpath(".//a[@href = 'https://twitter.com/pern_sa']/img");
 
-    public MainPage clickContactInvestorsLinkText(){
+    public MainPage clickContactInvestorsLinkText() {
         driver.findElement(contactInvestorLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnInformationForLocalCommunityLinkText(){
+
+    public MainPage clickOnInformationForLocalCommunityLinkText() {
         driver.findElement(securityInfoForLocalCommunityLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnRODOLinkText(){
+
+    public MainPage clickOnRODOLinkText() {
         driver.findElement(rodoLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickPrivacyPolicyLinkText(){
+
+    public MainPage clickPrivacyPolicyLinkText() {
         driver.findElement(privacyPolicyLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnCookiesPolicyLinkText(){
+
+    public MainPage clickOnCookiesPolicyLinkText() {
         driver.findElement(cookiesPolicyLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnPublicInformationSheetLinkText(){
+
+    public MainPage clickOnPublicInformationSheetLinkText() {
         driver.findElement(publicInformationSheetLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnTaxStrategyLinkText(){
+
+    public MainPage clickOnTaxStrategyLinkText() {
         driver.findElement(taxStrategyLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnCompaniesListLinkText(){
+
+    public MainPage clickOnCompaniesListLinkText() {
         driver.findElement(companiesLintLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnZSZPolicyLinkText(){
+
+    public MainPage clickOnZSZPolicyLinkText() {
         driver.findElement(zszPolicyLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnNaftoportLogo(){
+
+    public MainPage clickOnNaftoportLogo() {
         driver.findElement(naftoportLogo).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnSiarkopolLogo(){
+
+    public MainPage clickOnSiarkopolLogo() {
         driver.findElement(siarkopolLogo).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnNaftorLogo(){
+
+    public MainPage clickOnNaftorLogo() {
         driver.findElement(naftorLogo).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnSarmatiaLogo(){
+
+    public MainPage clickOnSarmatiaLogo() {
         driver.findElement(sarmatiaLogo).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnNaftoservisLogo(){
+
+    public MainPage clickOnNaftoservisLogo() {
         driver.findElement(naftoservisLogo).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnYoutubeLogo(){
+
+    public MainPage clickOnYoutubeLogo() {
         driver.findElement(youTubeLogo).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnLinkedInLogo(){
+
+    public MainPage clickOnLinkedInLogo() {
         driver.findElement(linkedInLogo).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnTwitterLogo(){
+
+    public MainPage clickOnTwitterLogo() {
         driver.findElement(twitterLogo).click();
         return new MainPage(driver);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

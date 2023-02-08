@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class MainPage extends BasePage{
+public class MainPage extends BasePage {
     private HeaderPage headerPage;
     private FooterPage footerPage;
     private WebDriverWait webDriverWait;
@@ -30,55 +30,53 @@ public class MainPage extends BasePage{
         footerPage = new FooterPage(driver);
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(17));
     }
-    public FuelServicesPage goToFuelServicesPage(){
+
+    public FuelServicesPage goToFuelServicesPage() {
         WebElement liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(pernFuelsTab));
         liquidFuelsTab.click();
         return new FuelServicesPage(driver);
 
     }
-    public OilServicesPage goToOilServicesPage(){
+
+    public OilServicesPage goToOilServicesPage() {
         WebElement oilServicesTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(oilTab));
         oilServicesTab.click();
         return new OilServicesPage(driver);
 
     }
-    public MainPage scrollToServicesTitle(){
+
+    public MainPage scrollToServicesTitle() {
         WebElement servicesTitle = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(servicesSectionTitle));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", servicesTitle);
         return new MainPage(driver);
     }
-    public LaboratoryServicesPage goToLaboratoryServicesPage(){
+
+    public LaboratoryServicesPage goToLaboratoryServicesPage() {
         WebElement laboratoryTabb = webDriverWait.until(ExpectedConditions.elementToBeClickable(laboratoryTab));
         Actions actions = new Actions(driver);
         actions.moveToElement(laboratoryTabb).click().build().perform();
         return new LaboratoryServicesPage(driver);
 
     }
-    public CDOKServicesPage goToCDOKServicesPage(){
+
+    public CDOKServicesPage goToCDOKServicesPage() {
         WebElement cdokServicesTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(cdokTab));
         cdokServicesTab.click();
         return new CDOKServicesPage(driver);
 
     }
-    public StreamCalibrationServicesPage goToStreamCalibrationsServicesPage(){
+
+    public StreamCalibrationServicesPage goToStreamCalibrationsServicesPage() {
         WebElement liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(streamCalibrationsTab));
         liquidFuelsTab.click();
         return new StreamCalibrationServicesPage(driver);
 
     }
-    public TelecomunicationServicesPage goToTelecommunicationServicesPage(){
+
+    public TelecomunicationServicesPage goToTelecommunicationServicesPage() {
         WebElement liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(telecommunicationTab));
         liquidFuelsTab.click();
         return new TelecomunicationServicesPage(driver);
-    }
-    public void clickOnSearcher(){
-        headerPage.clickOnSearchBtn();
-    }
-    public void typeInSomeText(String phrase){
-        headerPage.searchInSomeText(phrase);
-    }
-    public void clickOnYT(){
-        footerPage.clickOnYoutubeLogo();
     }
 
 }

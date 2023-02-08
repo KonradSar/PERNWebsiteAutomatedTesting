@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LaboratoryServicesPage extends BasePage{
+public class LaboratoryServicesPage extends BasePage {
     private HeaderPage headerPage;
     private FooterPage footerPage;
     private WebDriverWait webDriverWait;
@@ -23,7 +23,7 @@ public class LaboratoryServicesPage extends BasePage{
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(7));
     }
 
-    public FuelsAndBiocomponentsRequirementsPage goToFuelsAndBiocomponentsRequirementsPage(){
+    public FuelsAndBiocomponentsRequirementsPage goToFuelsAndBiocomponentsRequirementsPage() {
         WebElement requirementsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(fuelsAndBiocomponentsRequirementsTab));
         requirementsTab.click();
         return new FuelsAndBiocomponentsRequirementsPage(driver);

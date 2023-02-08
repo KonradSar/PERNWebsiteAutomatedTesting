@@ -10,12 +10,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class HeaderPage extends BasePage{
+public class HeaderPage extends BasePage {
     private WebDriverWait webDriverWait;
-    protected HeaderPage(WebDriver driver) {
+
+    public HeaderPage(WebDriver driver) {
         super(driver);
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(17));
     }
+
     private By pernLogo = By.xpath(".//a[@class = 'navbar-brand']/img");
     private By mainPageLink = By.xpath(".//li[@id = 'menu-item-2482']/a");
     private By aboutUsLink = By.xpath(".//li[@id = 'menu-item-2483']/a");
@@ -29,47 +31,57 @@ public class HeaderPage extends BasePage{
 
     private By textInput = By.xpath(".//input[@class='search-modal__input field form-control']");
 
-    public MainPage clickOnMainPageLinkText(){
+    public MainPage clickOnMainPageLinkText() {
         driver.findElement(mainPageLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnPERNLogo(){
+
+    public MainPage clickOnPERNLogo() {
         driver.findElement(pernLogo).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnAboutUsLinkText(){
+
+    public MainPage clickOnAboutUsLinkText() {
         driver.findElement(aboutUsLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnPressOfficeLinkText(){
+
+    public MainPage clickOnPressOfficeLinkText() {
         driver.findElement(pressOfficeLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnServicesLinkText(){
+
+    public MainPage clickOnServicesLinkText() {
         driver.findElement(servicesLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnContactUsLinkText(){
+
+    public MainPage clickOnContactUsLinkText() {
         driver.findElement(contactUsLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnSearchBtn(){
+
+    public MainPage clickOnSearchBtn() {
         driver.findElement(searchBtn).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnCDOKContactLinkText(){
+
+    public MainPage clickOnCDOKContactLinkText() {
         driver.findElement(cdokContactLink).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnShoppingPlatformLinkText(){
+
+    public MainPage clickOnShoppingPlatformLinkText() {
         driver.findElement(shoppingPlatform).click();
         return new MainPage(driver);
     }
-    public MainPage clickOnChangeLanguageLinkText(){
+
+    public MainPage clickOnChangeLanguageLinkText() {
         driver.findElement(changeLanguageBtn).click();
         return new MainPage(driver);
     }
-    public MainPage searchInSomeText(String phrase){
+
+    public MainPage searchInSomeText(String phrase) {
         WebElement searchInput = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(textInput));
         searchInput.sendKeys(phrase);
         Actions actions = new Actions(driver);

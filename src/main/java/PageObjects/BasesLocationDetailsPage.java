@@ -3,17 +3,16 @@ package PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BasesLocationDetailsPage extends BasePage{
+public class BasesLocationDetailsPage extends BasePage {
     private HeaderPage headerPage;
     private FooterPage footerPage;
     private WebDriverWait webDriverWait;
 
-    private By locationOfBase = By.cssSelector("table[class$='table-striped']>tbody>tr:nth-child(3)>td");
+    private By koluszkiBaseBanner = By.cssSelector(".tytul-obiekt");
 
     public BasesLocationDetailsPage(WebDriver driver) {
         super(driver);
@@ -22,12 +21,14 @@ public class BasesLocationDetailsPage extends BasePage{
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(7));
     }
 
-    public String copyBaseAddress(){
-        WebElement addressRow = driver.findElement(locationOfBase);
-        Actions actions = new Actions(driver);
-        actions.doubleClick(addressRow).build().perform();
-        String value = addressRow.getText();
-        return value;
+    public boolean isKoluszkiDetailDisplayed() {
+        boolean logicValue = false;
+        WebElement webElement = driver.findElement(By.cssSelector(".tytul-obiekt"));
+        String valueOfBase = webElement.getText();
+        if (valueOfBase.equals("Baza Paliw nr 1 w Koluszkach")) {
+            logicValue = true;
+        }
+        return logicValue;
     }
 
 }

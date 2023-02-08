@@ -22,6 +22,7 @@ public class GoogleSearchPage {
     protected WebDriverWait webDriverWait;
 
     protected By searchInput = By.xpath(".//input[@class='gLFyf']");
+    //linijka 27 usunąć div
 
     protected By closeCookiesBtn = By.cssSelector("button#W0wltc>div");
 

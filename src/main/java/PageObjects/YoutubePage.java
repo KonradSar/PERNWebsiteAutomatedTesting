@@ -23,11 +23,12 @@ public class YoutubePage {
 
     By inputSearch = By.xpath(".//input[@id='search']");
 
-    public YoutubePage closeCookiesBtn(){
+    public YoutubePage closeCookiesBtn() {
         driver.findElement(rejectCookiesBtn).click();
         return new YoutubePage(driver);
     }
-    public YoutubePage searchOnYT(String value){
+
+    public YoutubePage searchOnYT(String value) {
         driver.findElement(inputSearch).sendKeys(value);
         driver.findElement(inputSearch).click();
 
