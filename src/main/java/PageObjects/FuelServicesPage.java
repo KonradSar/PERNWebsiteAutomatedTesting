@@ -15,8 +15,6 @@ public class FuelServicesPage extends BasePage {
     private FooterPage footerPage;
     private WebDriverWait webDriverWait;
     private By mapOfLoactions = By.cssSelector("#location-map");
-//    private By koluszkiLocation = By.cssSelector("#baza_paliw #Baza_paliw_lodzkie_Baza_Paliw_nr_1_w_Koluszkach");
-    //[href='https://www.pern.pl/obiekty/baza-paliw-nr-1-w-koluszkach/']
 
 
     public FuelServicesPage(WebDriver driver) {

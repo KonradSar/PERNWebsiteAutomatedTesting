@@ -29,7 +29,7 @@ public class FuelServicesTests extends BaseTest {
 
 
     @Test
-    public void goToKoluszkiBaseDetailsPage() {
+    public void goToKoluszkiBaseDetailsPage(){
         //when
         mainPage.goToFuelServicesPage().selectKoluszkiBaseLocation();
         //then
@@ -52,7 +52,7 @@ public class FuelServicesTests extends BaseTest {
         //given
         mainPage.scrollToServicesTitle().goToLaboratoryServicesPage();
         laboratoryServicesPage.goToFuelsAndBiocomponentsRequirementsPage();
-        Assertions.assertEquals("https://www.pern.pl/uslugi/laboratorium/wymagania-dla-paliw-i-biokomponentow/", driver.getCurrentUrl());
+        Assertions.assertEquals(testDataReader.getSection().getSectionURL(), driver.getCurrentUrl());
         //when
         fuelsAndBiocomponentsRequirementsPage.clickOnDieseBtn().scrollToFlashPointTableValue();
         //then
@@ -60,7 +60,7 @@ public class FuelServicesTests extends BaseTest {
     }
 
     @Test
-    public void goToYoutubeWebPage() {
+    public void goToYouTubePernMaterialsStartingFromMainPage() {
         //when
         footerPage.clickOnYoutubeLogo();
         //then
