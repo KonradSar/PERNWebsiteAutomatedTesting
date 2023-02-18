@@ -23,6 +23,12 @@ public class MainPage extends BasePage {
 
     private By servicesSectionTitle = By.xpath(".//h2[@class='section__title']");
 
+    private By map = By.xpath(".//span[@class='locations-list__item-value']");
+
+    private By plockLocation = By.cssSelector("#siedziba_Mazowieckie_siedziba_spółki circle");
+
+    private By plockLabel = By.xpath(".//div[@class='locations-map-list__single locations-map-list__single--active']//a[@href='https://www.pern.pl/obiekty/siedziba-pern/']");
+
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -48,6 +54,21 @@ public class MainPage extends BasePage {
     public MainPage scrollToServicesTitle() {
         WebElement servicesTitle = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(servicesSectionTitle));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", servicesTitle);
+        return new MainPage(driver);
+    }
+
+    public MainPage scrollToBottomMap() {
+        WebElement servicesTitle = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(map));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", servicesTitle);
+        return new MainPage(driver);
+    }
+
+    public MainPage clickOnPlockLocation() {
+        Actions actions = new Actions(driver);
+        WebElement location = driver.findElement(plockLocation);
+        actions.moveToElement(location).click().build().perform();
+        WebElement pernLabel = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(plockLabel));
+        pernLabel.click();
         return new MainPage(driver);
     }
 

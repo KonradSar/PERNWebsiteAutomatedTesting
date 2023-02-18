@@ -1,5 +1,6 @@
 package POMTests;
 
+import Utils.Strings;
 import Utils.Section;
 import Utils.TestDataReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -28,7 +29,7 @@ public class BaseTest {
         Properties properties = new Properties();
         properties.load(new InputStreamReader(new FileInputStream("src/configs/Configuration.properties"), StandardCharsets.UTF_8));
         baseURL = properties.getProperty("baseURL");
-        testDataReader = new TestDataReader(testDataLocation, new Section(properties));
+        testDataReader = new TestDataReader(testDataLocation, new Section(properties), new Strings(properties), new Strings(properties), new Strings(properties));
 
     }
 

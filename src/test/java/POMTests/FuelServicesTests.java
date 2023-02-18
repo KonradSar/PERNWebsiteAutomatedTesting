@@ -12,8 +12,12 @@ public class FuelServicesTests extends BaseTest {
     SearchResultsPage searchResultsPage;
     LaboratoryServicesPage laboratoryServicesPage;
     FuelsAndBiocomponentsRequirementsPage fuelsAndBiocomponentsRequirementsPage;
+
+    MainLocationPage mainLocationPage;
     FooterPage footerPage;
-    YoutubePage youtubePage;
+    CookiesViewPage cookiesViewPage;
+
+    GoogleMapsPage googleMapsPage;
 
     @BeforeEach
     public void initializeObjects() {
@@ -23,13 +27,15 @@ public class FuelServicesTests extends BaseTest {
         searchResultsPage = new SearchResultsPage(driver);
         laboratoryServicesPage = new LaboratoryServicesPage(driver);
         fuelsAndBiocomponentsRequirementsPage = new FuelsAndBiocomponentsRequirementsPage(driver);
+        mainLocationPage = new MainLocationPage(driver);
         footerPage = new FooterPage(driver);
-        youtubePage = new YoutubePage(driver);
+        cookiesViewPage = new CookiesViewPage(driver);
+        googleMapsPage = new GoogleMapsPage(driver);
     }
 
 
     @Test
-    public void goToKoluszkiBaseDetailsPage(){
+    public void goToKoluszkiBaseDetailsPage() {
         //when
         mainPage.goToFuelServicesPage().selectKoluszkiBaseLocation();
         //then
@@ -37,13 +43,26 @@ public class FuelServicesTests extends BaseTest {
     }
 
     @Test
-    public void searchPhraseInSearcherFromTheHeader() {
+    public void isAnyResultOfSearch() {
         //given
         headerPage.clickOnSearchBtn();
         //when
-        headerPage.searchInSomeText("Usługi ochrony osób i mienia oraz ochrony przeciwpożarowej");
+        headerPage.searchInSomeText(testDataReader.getSearchSafetyPhrase().getSearchSafetyValueInPERN());
         //then
         Assertions.assertTrue(searchResultsPage.isAnyResultNumber());
+
+    }
+
+    @Test
+    public void navigateToPlockLocation() {
+        mainPage.scrollToBottomMap().clickOnPlockLocation();
+        Assertions.assertEquals(testDataReader.getSection().getMainLocationSectionURL(), driver.getCurrentUrl());
+        mainLocationPage.clickOnNavigateBtn();
+        cookiesViewPage.closeCookiesBtn();
+        String inputValueFromGoogleMapsPage = googleMapsPage.getSearchInputValue();
+        Assertions.assertTrue(inputValueFromGoogleMapsPage.contains(testDataReader.getPernAddressInputValue().getAddress()));
+
+
 
     }
 
@@ -52,7 +71,7 @@ public class FuelServicesTests extends BaseTest {
         //given
         mainPage.scrollToServicesTitle().goToLaboratoryServicesPage();
         laboratoryServicesPage.goToFuelsAndBiocomponentsRequirementsPage();
-        Assertions.assertEquals(testDataReader.getSection().getSectionURL(), driver.getCurrentUrl());
+        Assertions.assertEquals(testDataReader.getSection().getLaboratorySectionURL(), driver.getCurrentUrl());
         //when
         fuelsAndBiocomponentsRequirementsPage.clickOnDieseBtn().scrollToFlashPointTableValue();
         //then
@@ -64,7 +83,7 @@ public class FuelServicesTests extends BaseTest {
         //when
         footerPage.clickOnYoutubeLogo();
         //then
-        youtubePage.closeCookiesBtn();
-        Assertions.assertEquals("https://www.youtube.com/channel/UCJnkxHoJhVynx-jXjv6OaRg", driver.getCurrentUrl());
+        cookiesViewPage.closeCookiesBtn();
+        Assertions.assertEquals(testDataReader.getYouTubeURLValue().getYouTubeURL(), driver.getCurrentUrl());
     }
 }

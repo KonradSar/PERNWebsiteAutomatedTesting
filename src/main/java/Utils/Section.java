@@ -3,14 +3,21 @@ package Utils;
 import java.util.Properties;
 
 public class Section {
-    private final String sectionURL;
+    private final String laboratorySectionURL;
+    private final String mainLocationSectionURL;
+
 
     public Section(Properties properties) {
 
-        sectionURL = properties.getProperty("section.sectionURL");
+        laboratorySectionURL = properties.getProperty("section.sectionLaboratoryURL");
+        mainLocationSectionURL = properties.getProperty("section.sectionMainLocationURL");
     }
 
-    public String getSectionURL() {
-        return sectionURL;
+    public String getLaboratorySectionURL() {
+        return laboratorySectionURL;
+    }
+
+    public String getMainLocationSectionURL() {
+        return mainLocationSectionURL;
     }
 }
