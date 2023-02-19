@@ -50,7 +50,6 @@ public class FuelServicesTests extends BaseTest {
         headerPage.searchInSomeText(testDataReader.getSearchSafetyPhrase().getSearchSafetyValueInPERN());
         //then
         Assertions.assertTrue(searchResultsPage.isAnyResultNumber());
-
     }
 
     @Test
@@ -61,9 +60,6 @@ public class FuelServicesTests extends BaseTest {
         cookiesViewPage.closeCookiesBtn();
         String inputValueFromGoogleMapsPage = googleMapsPage.getSearchInputValue();
         Assertions.assertTrue(inputValueFromGoogleMapsPage.contains(testDataReader.getPernAddressInputValue().getAddress()));
-
-
-
     }
 
     @Test
@@ -78,6 +74,7 @@ public class FuelServicesTests extends BaseTest {
         Assertions.assertTrue(fuelsAndBiocomponentsRequirementsPage.isFlashPointCorrect());
     }
 
+    //tests for displaying additional materials directly from PERN.pl website:
     @Test
     public void goToYouTubePernMaterialsStartingFromMainPage() {
         //when
@@ -86,5 +83,27 @@ public class FuelServicesTests extends BaseTest {
         cookiesViewPage.closeCookiesBtn();
         Assertions.assertEquals(testDataReader.getYouTubeURLValue().getYouTubeURL(), driver.getCurrentUrl());
     }
-    //testCommentForAddingDropDownMEnu
+
+    //testsForDropDownMenuBelow:
+    @Test
+    public void isRegionsNumberCorrect() {
+        Assertions.assertTrue(mainPage.isRegionsRangeInDropDownCorrect());
+    }
+
+    @Test
+    public void isTypeOfLocationsNumberCorrect() {
+        Assertions.assertTrue(mainPage.isTypeOfLocationRangeCorrect());
+    }
+
+    @Test
+    public void displayFuelBasesForSilesia() throws InterruptedException {
+        mainPage.scrollToBottomMap().selectSilesiaDistrict().selectFuelBasesType().pressSearchGreenBtn();
+        Assertions.assertTrue(mainPage.isNumberOfSilesiaFuelBasesCorrect());
+    }
+
+    @Test
+    public void displayOilBasesForAllRegions() throws InterruptedException {
+        mainPage.selectOilBasesType().pressSearchGreenBtn();
+        Assertions.assertTrue(mainPage.isNumberOfOilBasesInPolandCorrect());
+    }
 }
