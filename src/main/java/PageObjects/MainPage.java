@@ -37,6 +37,12 @@ public class MainPage extends BasePage {
 
     private By searchGreenBtn = By.xpath(".//button[@class='green-button green-button--second locations-form__button button']");
 
+    private By changeLanguageBtn = By.cssSelector(".language-switcher");
+
+    private By languageSwitcher = By.xpath(".//div[@class='language-switcher language-switcher--active']");
+
+    private By englishLanguageBtn = By.cssSelector(".language-switcher a[href='https://www.pern.pl/en/']");
+
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -104,6 +110,13 @@ public class MainPage extends BasePage {
     public MainPage pressSearchGreenBtn() throws InterruptedException {
         driver.findElement(searchGreenBtn).click();
         Thread.sleep(500);
+        return new MainPage(driver);
+    }
+
+    public MainPage changeLanguageToEN() {
+        driver.findElement(changeLanguageBtn).click();
+        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(languageSwitcher));
+        driver.findElement(englishLanguageBtn).click();
         return new MainPage(driver);
     }
 

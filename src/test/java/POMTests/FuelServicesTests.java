@@ -53,7 +53,7 @@ public class FuelServicesTests extends BaseTest {
     }
 
     @Test
-    public void navigateToPlockLocation() {
+    public void searchPlockLocationInGoogleMaps() {
         mainPage.scrollToBottomMap().clickOnPlockLocation();
         Assertions.assertEquals(testDataReader.getSection().getMainLocationSectionURL(), driver.getCurrentUrl());
         mainLocationPage.clickOnNavigateBtn();
@@ -105,5 +105,10 @@ public class FuelServicesTests extends BaseTest {
     public void displayOilBasesForAllRegions() throws InterruptedException {
         mainPage.selectOilBasesType().pressSearchGreenBtn();
         Assertions.assertTrue(mainPage.isNumberOfOilBasesInPolandCorrect());
+    }
+    @Test
+    public void checkLanguageToEN(){
+        mainPage.changeLanguageToEN();
+        Assertions.assertTrue(driver.getPageSource().contains("lang=\"en-US\""));
     }
 }
