@@ -1,12 +1,11 @@
 package PageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class OilServicesPage extends BasePage{
+public class OilServicesPage extends BasePage {
     private HeaderPage headerPage;
     private FooterPage footerPage;
     private WebDriverWait webDriverWait;

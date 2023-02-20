@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class CDOKServicesPage extends BasePage{
+public class CDOKServicesPage extends BasePage {
     private HeaderPage headerPage;
     private FooterPage footerPage;
     private WebDriverWait webDriverWait;

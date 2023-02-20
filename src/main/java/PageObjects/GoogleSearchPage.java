@@ -36,7 +36,7 @@ public class GoogleSearchPage {
         Thread.sleep(4000);
     }
 
-    public GoogleSearchPage closeCookiesView(){
+    public GoogleSearchPage closeCookiesView() {
         WebElement cookiesBtn = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(closeCookiesBtn));
         cookiesBtn.click();
         return new GoogleSearchPage(driver);
