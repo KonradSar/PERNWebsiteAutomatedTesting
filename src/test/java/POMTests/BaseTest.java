@@ -21,16 +21,15 @@ public class BaseTest {
     protected static String baseURL;
 
     protected static TestDataReader testDataReader;
-    private static String testDataLocation = "src/configs/Configuration.properties";
+    private final static String TEST_DATA_LOCATION = "src/configs/Configuration.properties";
 
 
     @BeforeAll
     public static void loadConfig() throws IOException {
         Properties properties = new Properties();
-        properties.load(new InputStreamReader(new FileInputStream("src/configs/Configuration.properties"), StandardCharsets.UTF_8));
+        properties.load(new InputStreamReader(new FileInputStream(TEST_DATA_LOCATION), StandardCharsets.UTF_8));
         baseURL = properties.getProperty("baseURL");
-        testDataReader = new TestDataReader(testDataLocation, new Section(properties), new Strings(properties), new Strings(properties), new Strings(properties));
-
+        testDataReader = new TestDataReader(TEST_DATA_LOCATION, new Section(properties), new Strings(properties), new Strings(properties), new Strings(properties));
     }
 
     @BeforeEach

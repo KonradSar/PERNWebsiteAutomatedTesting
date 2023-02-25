@@ -8,7 +8,6 @@ public class Section {
 
 
     public Section(Properties properties) {
-
         laboratorySectionURL = properties.getProperty("section.sectionLaboratoryURL");
         mainLocationSectionURL = properties.getProperty("section.sectionMainLocationURL");
     }

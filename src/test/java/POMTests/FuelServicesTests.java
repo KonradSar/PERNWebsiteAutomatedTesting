@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
+
 public class FuelServicesTests extends BaseTest {
     HeaderPage headerPage;
     MainPage mainPage;
@@ -35,80 +38,100 @@ public class FuelServicesTests extends BaseTest {
 
 
     @Test
-    public void goToKoluszkiBaseDetailsPage() {
-        //when
+    public void goToKoluszkiBaseDetailsPage(){
+        // When
         mainPage.goToFuelServicesPage().selectKoluszkiBaseLocation();
-        //then
-        Assertions.assertTrue(basesLocationDetailsPage.isKoluszkiDetailDisplayed());
+
+        // Then
+        assertTrue(basesLocationDetailsPage.isKoluszkiDetailDisplayed());
     }
 
     @Test
     public void isAnyResultOfSearch() {
-        //given
+        // Given
         headerPage.clickOnSearchBtn();
-        //when
+
+        // When
         headerPage.searchInSomeText(testDataReader.getSearchSafetyPhrase().getSearchSafetyValueInPERN());
-        //then
-        Assertions.assertTrue(searchResultsPage.isAnyResultNumber());
+
+        // Then
+        assertTrue(searchResultsPage.isAnyResultNumber());
     }
 
     @Test
     public void searchPlockLocationInGoogleMaps() {
+        // Given
         mainPage.scrollToBottomMap().clickOnPlockLocation();
         Assertions.assertEquals(testDataReader.getSection().getMainLocationSectionURL(), driver.getCurrentUrl());
         mainLocationPage.clickOnNavigateBtn();
         cookiesViewPage.closeCookiesBtn();
+
+        // When
         String inputValueFromGoogleMapsPage = googleMapsPage.getSearchInputValue();
-        Assertions.assertTrue(inputValueFromGoogleMapsPage.contains(testDataReader.getPernAddressInputValue().getAddress()));
+
+        // Then
+        assertTrue(inputValueFromGoogleMapsPage.contains(testDataReader.getPernAddressInputValue().getAddress()));
     }
 
     @Test
     public void goToLaboratoryPageAndCheckDieselFlashPointValue() {
-        //given
+        // Given
         mainPage.scrollToServicesTitle().goToLaboratoryServicesPage();
         laboratoryServicesPage.goToFuelsAndBiocomponentsRequirementsPage();
-        Assertions.assertEquals(testDataReader.getSection().getLaboratorySectionURL(), driver.getCurrentUrl());
-        //when
+        assertEquals(testDataReader.getSection().getLaboratorySectionURL(), driver.getCurrentUrl());
+
+        // When
         fuelsAndBiocomponentsRequirementsPage.clickOnDieseBtn().scrollToFlashPointTableValue();
-        //then
-        Assertions.assertTrue(fuelsAndBiocomponentsRequirementsPage.isFlashPointCorrect());
+
+        // Then
+        assertTrue(fuelsAndBiocomponentsRequirementsPage.isFlashPointCorrect());
     }
 
     //tests for displaying additional materials directly from PERN.pl website:
     @Test
     public void goToYouTubePernMaterialsStartingFromMainPage() {
-        //when
+        // When
         footerPage.clickOnYoutubeLogo();
-        //then
         cookiesViewPage.closeCookiesBtn();
-        Assertions.assertEquals(testDataReader.getYouTubeURLValue().getYouTubeURL(), driver.getCurrentUrl());
+
+        // Then
+        assertEquals(testDataReader.getYouTubeURLValue().getYouTubeURL(), driver.getCurrentUrl());
     }
 
     //testsForDropDownMenuBelow:
     @Test
     public void isRegionsNumberCorrect() {
-        Assertions.assertTrue(mainPage.isRegionsRangeInDropDownCorrect());
+        assertTrue(mainPage.isRegionsRangeInDropDownCorrect());
     }
 
     @Test
     public void isTypeOfLocationsNumberCorrect() {
-        Assertions.assertTrue(mainPage.isTypeOfLocationRangeCorrect());
+        assertTrue(mainPage.isTypeOfLocationRangeCorrect());
     }
 
     @Test
     public void displayFuelBasesForSilesia() throws InterruptedException {
+        // When
         mainPage.scrollToBottomMap().selectSilesiaDistrict().selectFuelBasesType().pressSearchGreenBtn();
-        Assertions.assertTrue(mainPage.isNumberOfSilesiaFuelBasesCorrect());
+
+        // Then
+        assertTrue(mainPage.isNumberOfSilesiaFuelBasesCorrect());
     }
 
     @Test
     public void displayOilBasesForAllRegions() throws InterruptedException {
+        // When
         mainPage.selectOilBasesType().pressSearchGreenBtn();
-        Assertions.assertTrue(mainPage.isNumberOfOilBasesInPolandCorrect());
+
+        // Then
+        assertTrue(mainPage.isNumberOfOilBasesInPolandCorrect());
     }
     @Test
     public void checkLanguageToEN(){
+        // When
         mainPage.changeLanguageToEN();
-        Assertions.assertTrue(driver.getPageSource().contains("lang=\"en-US\""));
+
+        // Then
+        assertTrue(driver.getPageSource().contains("lang=\"en-US\""));
     }
 }

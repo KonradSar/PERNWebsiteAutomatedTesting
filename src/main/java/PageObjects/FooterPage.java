@@ -8,23 +8,23 @@ public class FooterPage extends BasePage {
         super(driver);
     }
 
-    private By contactInvestorLink = By.xpath(".//li[@id = 'menu-item-2614']/a");
-    private By securityInfoForLocalCommunityLink = By.xpath(".//li[@id = 'menu-item-7252']/a");
-    private By rodoLink = By.xpath(".//li[@id = 'menu-item-2606']/a");
-    private By privacyPolicyLink = By.xpath(".//li[@id = 'menu-item-30']/a");
-    private By cookiesPolicyLink = By.xpath(".//li[@id = 'menu-item-29']/a");
-    private By publicInformationSheetLink = By.xpath(".//li[@id = 'menu-item-2603']/a");
-    private By taxStrategyLink = By.xpath(".//li[@id = 'menu-item-2604']/a");
-    private By companiesLintLink = By.xpath(".//li[@id = 'menu-item-2605']/a");
-    private By zszPolicyLink = By.xpath(".//li[@id = 'menu-item-4832']/a");
-    private By naftoportLogo = By.xpath(".//a[@href = 'https://naftoport.pl/']/img");
-    private By siarkopolLogo = By.xpath(".//a[@href = 'http://siarkopol.gda.pl/']/img");
-    private By naftorLogo = By.xpath(".//a[@href = 'https://naftor.pl/']/img");
-    private By naftoservisLogo = By.xpath(".//a[@href = 'https://naftoserwis.pl/']/img");
-    private By sarmatiaLogo = By.xpath(".//a[@href = 'https://sarmatia.com.pl/']/img");
-    private By youTubeLogo = By.xpath(".//a[@href = 'https://www.youtube.com/channel/UCJnkxHoJhVynx-jXjv6OaRg']/img");
-    private By linkedInLogo = By.xpath(".//a[@href = 'https://www.linkedin.com/company/pern-s-a/']/img");
-    private By twitterLogo = By.xpath(".//a[@href = 'https://twitter.com/pern_sa']/img");
+    private final By contactInvestorLink = By.xpath(".//li[@id = 'menu-item-2614']/a");
+    private final By securityInfoForLocalCommunityLink = By.xpath(".//li[@id = 'menu-item-7252']/a");
+    private final By rodoLink = By.xpath(".//li[@id = 'menu-item-2606']/a");
+    private final By privacyPolicyLink = By.xpath(".//li[@id = 'menu-item-30']/a");
+    private final By cookiesPolicyLink = By.xpath(".//li[@id = 'menu-item-29']/a");
+    private final By publicInformationSheetLink = By.xpath(".//li[@id = 'menu-item-2603']/a");
+    private final By taxStrategyLink = By.xpath(".//li[@id = 'menu-item-2604']/a");
+    private final By companiesLintLink = By.xpath(".//li[@id = 'menu-item-2605']/a");
+    private final By zszPolicyLink = By.xpath(".//li[@id = 'menu-item-4832']/a");
+    private final By naftoportLogo = By.xpath(".//a[@href = 'https://naftoport.pl/']/img");
+    private final By siarkopolLogo = By.xpath(".//a[@href = 'http://siarkopol.gda.pl/']/img");
+    private final By naftorLogo = By.xpath(".//a[@href = 'https://naftor.pl/']/img");
+    private final By naftoservisLogo = By.xpath(".//a[@href = 'https://naftoserwis.pl/']/img");
+    private final By sarmatiaLogo = By.xpath(".//a[@href = 'https://sarmatia.com.pl/']/img");
+    private final By youTubeLogo = By.xpath(".//a[@href = 'https://www.youtube.com/channel/UCJnkxHoJhVynx-jXjv6OaRg']/img");
+    private final By linkedInLogo = By.xpath(".//a[@href = 'https://www.linkedin.com/company/pern-s-a/']/img");
+    private final By twitterLogo = By.xpath(".//a[@href = 'https://twitter.com/pern_sa']/img");
 
     public MainPage clickContactInvestorsLinkText() {
         driver.findElement(contactInvestorLink).click();

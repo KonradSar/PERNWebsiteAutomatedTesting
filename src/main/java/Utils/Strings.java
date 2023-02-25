@@ -9,11 +9,9 @@ public class Strings {
     private final String searchSafetyValueInPERN;
 
     public Strings(Properties properties) {
-
         pernAddressValue = properties.getProperty("strings.plockLocationURL");
         youTubeURL = properties.getProperty("strings.youTubeURL");
         searchSafetyValueInPERN = properties.getProperty("strings.searchInPERNSafetyValue");
-
     }
 
     public String getAddress() {

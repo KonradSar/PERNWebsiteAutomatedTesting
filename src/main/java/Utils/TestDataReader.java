@@ -1,20 +1,14 @@
 package Utils;
 
-import org.openqa.selenium.devtools.idealized.Network;
-
 import java.util.Properties;
 
 public class TestDataReader extends FileReader {
     private Properties properties;
     private Section baseLocation;
-    private String testDataLocation;
-
+    private final String testDataLocation;
     private Strings pernAddressValue;
-
     private Strings youTubeURLValue;
-
-    private Strings searchSafetyPhrase;
-
+    private final Strings searchSafetyPhrase;
 
     public TestDataReader(String testDataLocation, Section baseLocation, Strings pernAddressInputValue, Strings youTubeURLValue, Strings searchSafetyPhrase) {
         super(testDataLocation);
@@ -27,16 +21,13 @@ public class TestDataReader extends FileReader {
 
     @Override
     void loadData() {
-
     }
 
     public void loadData(Properties properties) {
         baseLocation = new Section(properties);
         pernAddressValue = new Strings(properties);
         youTubeURLValue = new Strings(properties);
-
     }
-
 
     public String getTestDataLocation() {
         return testDataLocation;
