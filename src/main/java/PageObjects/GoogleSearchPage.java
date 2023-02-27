@@ -12,7 +12,7 @@ public class GoogleSearchPage {
 
     public GoogleSearchPage(WebDriver driver) {
         this.driver = driver;
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(7));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(2));
     }
 
     protected WebDriver driver;
@@ -36,8 +36,8 @@ public class GoogleSearchPage {
         Thread.sleep(4000);
     }
 
-    public GoogleSearchPage closeCookiesView(){
-        WebElement cookiesBtn = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(closeCookiesBtn));
+    public GoogleSearchPage closeCookiesView() {
+        var cookiesBtn = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(closeCookiesBtn));
         cookiesBtn.click();
         return new GoogleSearchPage(driver);
     }

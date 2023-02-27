@@ -2,29 +2,28 @@ package PageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BasesLocationDetailsPage extends BasePage{
-    private HeaderPage headerPage;
-    private FooterPage footerPage;
-    private WebDriverWait webDriverWait;
+public class BasesLocationDetailsPage extends BasePage {
+    private final HeaderPage headerPage;
+    private final FooterPage footerPage;
+    private final WebDriverWait webDriverWait;
 
-    private By locationOfBase = By.cssSelector("table[class$='table-striped']>tbody>tr:nth-child(3)>td");
+    private final By koluszkiBaseBanner = By.cssSelector(".tytul-obiekt");
 
     public BasesLocationDetailsPage(WebDriver driver) {
         super(driver);
         headerPage = new HeaderPage(driver);
         footerPage = new FooterPage(driver);
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(7));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(2));
     }
 
-    public String copyBaseAddress(){
-        WebElement addressRow = driver.findElement(locationOfBase);
-        String value = addressRow.getText();
-        return value;
+    public boolean isKoluszkiDetailDisplayed() {
+        var koluszkiBannerWebElement = driver.findElement(koluszkiBaseBanner);
+        webDriverWait.until(ExpectedConditions.visibilityOf(koluszkiBannerWebElement));
+        return koluszkiBannerWebElement.getText().equals("Baza Paliw nr 1 w Koluszkach");
     }
-
 }
