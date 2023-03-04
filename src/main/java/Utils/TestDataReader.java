@@ -3,20 +3,23 @@ package Utils;
 import java.util.Properties;
 
 public class TestDataReader extends FileReader {
+
     private Properties properties;
     private Section baseLocation;
     private final String testDataLocation;
     private Strings pernAddressValue;
     private Strings youTubeURLValue;
     private final Strings searchSafetyPhrase;
+    private final Section mainPageViewURL;
 
-    public TestDataReader(String testDataLocation, Section baseLocation, Strings pernAddressInputValue, Strings youTubeURLValue, Strings searchSafetyPhrase) {
+    public TestDataReader(String testDataLocation, Section baseLocation, Strings pernAddressInputValue, Strings youTubeURLValue, Strings searchSafetyPhrase, Section mainPageViewURL) {
         super(testDataLocation);
         this.testDataLocation = testDataLocation;
         this.baseLocation = baseLocation;
         this.pernAddressValue = pernAddressInputValue;
         this.youTubeURLValue = youTubeURLValue;
         this.searchSafetyPhrase = searchSafetyPhrase;
+        this.mainPageViewURL = mainPageViewURL;
     }
 
     @Override
@@ -47,6 +50,10 @@ public class TestDataReader extends FileReader {
 
     public Strings getSearchSafetyPhrase() {
         return searchSafetyPhrase;
+    }
+
+    public Section getMainPageViewURL() {
+        return mainPageViewURL;
     }
 }
 

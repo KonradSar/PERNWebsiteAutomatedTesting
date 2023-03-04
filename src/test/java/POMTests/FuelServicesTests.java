@@ -38,7 +38,7 @@ public class FuelServicesTests extends BaseTest {
 
 
     @Test
-    public void goToKoluszkiBaseDetailsPage(){
+    public void goToKoluszkiBaseDetailsPage() {
         // When
         mainPage.goToFuelServicesPage().selectKoluszkiBaseLocation();
 
@@ -126,8 +126,9 @@ public class FuelServicesTests extends BaseTest {
         // Then
         assertTrue(mainPage.isNumberOfOilBasesInPolandCorrect());
     }
+
     @Test
-    public void checkLanguageToEN(){
+    public void checkLanguageToEN() {
         // When
         mainPage.changeLanguageToEN();
 

@@ -5,7 +5,6 @@ import java.util.Properties;
 public class Strings {
     private final String pernAddressValue;
     private final String youTubeURL;
-
     private final String searchSafetyValueInPERN;
 
     public Strings(Properties properties) {

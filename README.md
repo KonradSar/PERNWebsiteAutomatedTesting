@@ -50,6 +50,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 <groupId>org.assertj</groupId>
 <artifactId>assertj-core</artifactId>
 <version>3.16.1</version></dependency>
+<dependency>
+<groupId>io.rest-assured</groupId>
+<artifactId>rest-assured</artifactId>
+<version>4.5.1</version>
+</dependency>
 </dependencies>
 <build>
 <finalName>pierwszyProjekt</finalName>
