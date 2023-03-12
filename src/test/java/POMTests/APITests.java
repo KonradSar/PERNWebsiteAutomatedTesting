@@ -5,6 +5,7 @@ import EndpointsConfig.MainPageEndpoint;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import static io.restassured.RestAssured.given;
 
 public class APITests extends BaseAPITest {
@@ -31,7 +32,9 @@ public class APITests extends BaseAPITest {
     public void goToFuelsAndReqPageSimpleMethod() {
         Response response = given()
                 .when()
-                .get(testDataReader.getSection().getLaboratorySectionURL());
+
+                .get(testDataReader.getMainSectionURL().getLaboratoryURL());
+
         System.out.println(response.prettyPrint());
         Assertions.assertEquals(200, response.statusCode());
     }
@@ -40,7 +43,7 @@ public class APITests extends BaseAPITest {
     public void goToMainPageSimpleMethod() {
         Response response = given()
                 .when()
-                .get(testDataReader.getSection().getMainPageViewURL());
+                .get(testDataReader.getMainSectionURL().getMainSectionURL());
         System.out.println(response.prettyPrint());
         Assertions.assertEquals(200, response.statusCode());
     }

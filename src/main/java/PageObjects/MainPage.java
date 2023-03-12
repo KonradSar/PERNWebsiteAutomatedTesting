@@ -1,7 +1,6 @@
 package PageObjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -12,42 +11,52 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
+import static Utils.CustomWebElementActions.scrollToElement;
+
 public class MainPage extends BasePage {
-    private final HeaderPage headerPage;
-    private final FooterPage footerPage;
+    private final HeaderSection headerSection;
+    private final FooterSection footerSection;
     private final WebDriverWait webDriverWait;
+
+    private final static int NUMBER_OF_SILESIA_FUEL_BASES = 4;
+    private final static int NUMBER_OF_LOCATIONS = 6;
+    private final static int NUMBER_OF_POLAND_OIL_BASES = 3;
+    private final static int REGIONS_RANGE = 17;
+
+    private final static String ALL_FUELBASES_CLICKABLE_SELECTOR = "#baza_paliw >g[id^='Baza']:not([style$='display: none;'])";
+
+    private final static String ALL_OILBASES_CLICKABLE_SELECTOR = "#magazyny_ropy_naftowej >:not([style$='display: none;']";
+
     private final By pernFuelsTab = By.xpath(".//div[contains(@class, 'p-uslugi-wrapper')]//a[@href= 'https://www.pern.pl/uslugi/paliwa/']");
-    private final By oilTab = By.xpath(".//a[@class = 'p-uslugi__item ended' and @href = 'https://www.pern.pl/uslugi/ropa/']/img");
-    private final By laboratoryTab = By.xpath(".//a[@class = 'p-uslugi__item ended' and @href = 'https://www.pern.pl/uslugi/labolatorium/']/img");
-    private final By cdokTab = By.xpath(".//a[@class = 'p-uslugi__item ended' and @href = 'https://www.pern.pl/uslugi/cdok/']/img");
-    private final By streamCalibrationsTab = By.xpath(".//a[@class = 'p-uslugi__item ended' and @href = 'https://www.pern.pl/uslugi/wzorcowanie-przeplywomierzy/']/img");
-    private final By telecommunicationTab = By.xpath(".//a[@class = 'p-uslugi__item ended' and @href = 'https://www.pern.pl/uslugi/telekomunikacja/']/img");
 
-    private final By servicesSectionTitle = By.xpath(".//h2[@class='section__title']");
+    private final By laboratoryTab = By.cssSelector(".animation a:nth-child(3)");
 
-    private final By map = By.xpath(".//span[@class='locations-list__item-value']");
+    private final By servicesSectionTitle = By.cssSelector(".section__title");
+
+    protected final By servicesLinkTextENLanguageVersion = By.cssSelector("#menu-item-25948>a");
+
+    protected final By servicesLinkTextDELanguageVersion = By.cssSelector("#menu-item-25924");
+
+    public final By map = By.cssSelector(".locations-list li:nth-child(1)");
 
     private final By plockLocation = By.cssSelector("#siedziba_Mazowieckie_siedziba_spółki circle");
 
-    private final By plockLabel = By.xpath(".//div[@class='locations-map-list__single locations-map-list__single--active']//a[@href='https://www.pern.pl/obiekty/siedziba-pern/']");
-
+    private final By plockLabel = By.cssSelector(".locations-map-list__single--active div a");
     private final By dropDownMenuRegions = By.cssSelector("#regions");
 
     private final By dropDownMenuTypeOfLocations = By.cssSelector("#locations");
-
-    private final By searchGreenBtn = By.xpath(".//button[@class='green-button green-button--second locations-form__button button']");
+    private final By searchGreenBtn = By.cssSelector(".green-button--second");
 
     private final By changeLanguageBtn = By.cssSelector(".language-switcher");
+    private final By languageSwitcher = By.cssSelector("div.language-switcher--active");
+    private final By englishLanguageBtn = By.cssSelector(".language-switcher li:nth-child(1)");
 
-    private final By languageSwitcher = By.xpath(".//div[@class='language-switcher language-switcher--active']");
-
-    private final By englishLanguageBtn = By.cssSelector(".language-switcher a[href='https://www.pern.pl/en/']");
-
+    private final By deutschLanguageBtn = By.cssSelector(".language-switcher li:nth-child(2)");
 
     public MainPage(WebDriver driver) {
         super(driver);
-        headerPage = new HeaderPage(driver);
-        footerPage = new FooterPage(driver);
+        headerSection = new HeaderSection(driver);
+        footerSection = new FooterSection(driver);
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(4));
     }
 
@@ -58,22 +67,15 @@ public class MainPage extends BasePage {
 
     }
 
-    public OilServicesPage goToOilServicesPage() {
-        var oilServicesTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(oilTab));
-        oilServicesTab.click();
-        return new OilServicesPage(driver);
-
-    }
-
     public MainPage scrollToServicesTitle() {
         var servicesTitle = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(servicesSectionTitle));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", servicesTitle);
+        scrollToElement(servicesTitle, driver);
         return new MainPage(driver);
     }
 
     public MainPage scrollToBottomMap() {
         var servicesTitle = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(map));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", servicesTitle);
+        scrollToElement(servicesTitle, driver);
         return new MainPage(driver);
     }
 
@@ -81,35 +83,21 @@ public class MainPage extends BasePage {
         Actions actions = new Actions(driver);
         var location = driver.findElement(plockLocation);
         actions.moveToElement(location).click().build().perform();
-        var pernLabel = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(plockLabel));
-        pernLabel.click();
+        driver.findElement(plockLabel).click();
         return new MainPage(driver);
     }
 
-    public MainPage selectSilesiaDistrict() {
-        var dropDownCategories = driver.findElement(dropDownMenuRegions);
-        Select categoriesDropdown = new Select(dropDownCategories);
-        categoriesDropdown.selectByIndex(12);
-        return new MainPage(driver);
-    }
-
-    public MainPage selectFuelBasesType() {
-        var dropDownCategories = driver.findElement(dropDownMenuTypeOfLocations);
-        Select categoriesDropdown = new Select(dropDownCategories);
-        categoriesDropdown.selectByIndex(4);
-        return new MainPage(driver);
-    }
-
-    public MainPage selectOilBasesType() {
-        var dropDownCategories = driver.findElement(dropDownMenuTypeOfLocations);
-        Select categoriesDropdown = new Select(dropDownCategories);
-        categoriesDropdown.selectByIndex(3);
-        return new MainPage(driver);
-    }
-
-    public MainPage pressSearchGreenBtn() throws InterruptedException {
+    public void displayFuelBasesForSilesia(LocationTypeDropdownOption typeOfLocation, DistrictTypeDropdownOption districtOption) {
+        driver.findElement(typeOfLocation.typeOfLocationLocator).click();
+        driver.findElement(districtOption.districtTypeLocator).click();
         driver.findElement(searchGreenBtn).click();
-        Thread.sleep(500);
+        webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(ALL_FUELBASES_CLICKABLE_SELECTOR)));
+    }
+
+    public MainPage displayOilBasesForAllRegions(LocationTypeDropdownOption typeOfLocation) {
+        driver.findElement(typeOfLocation.typeOfLocationLocator).click();
+        driver.findElement(searchGreenBtn).click();
+        webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(ALL_OILBASES_CLICKABLE_SELECTOR)));
         return new MainPage(driver);
     }
 
@@ -117,6 +105,13 @@ public class MainPage extends BasePage {
         driver.findElement(changeLanguageBtn).click();
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(languageSwitcher));
         driver.findElement(englishLanguageBtn).click();
+        return new MainPage(driver);
+    }
+
+    public MainPage changeLanguageToDE() {
+        driver.findElement(changeLanguageBtn).click();
+        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(languageSwitcher));
+        driver.findElement(deutschLanguageBtn).click();
         return new MainPage(driver);
     }
 
@@ -128,73 +123,38 @@ public class MainPage extends BasePage {
 
     }
 
-    public CDOKServicesPage goToCDOKServicesPage() {
-        var cdokServicesTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(cdokTab));
-        cdokServicesTab.click();
-        return new CDOKServicesPage(driver);
-
-    }
-
-    public StreamCalibrationServicesPage goToStreamCalibrationsServicesPage() {
-        var liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(streamCalibrationsTab));
-        liquidFuelsTab.click();
-        return new StreamCalibrationServicesPage(driver);
-
-    }
-
-    public TelecomunicationServicesPage goToTelecommunicationServicesPage() {
-        var liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(telecommunicationTab));
-        liquidFuelsTab.click();
-        return new TelecomunicationServicesPage(driver);
-    }
-
     public boolean isRegionsRangeInDropDownCorrect() {
-        boolean logicValue = false;
         var dropDownRegionCategories = driver.findElement(dropDownMenuRegions);
         Select categoriesDropdown = new Select(dropDownRegionCategories);
         List<WebElement> regionsList = categoriesDropdown.getOptions();
-        if (regionsList.size() == 17) {
-            logicValue = true;
-        } else {
-            System.out.println("number of regions is " + regionsList.size());
-        }
-        return logicValue;
+        return (regionsList.size() == REGIONS_RANGE);
     }
 
     public boolean isTypeOfLocationRangeCorrect() {
-        boolean logicValue = false;
         var dropDownLocationsCategories = driver.findElement(dropDownMenuTypeOfLocations);
         Select categoriesDropdown = new Select(dropDownLocationsCategories);
         List<WebElement> locationsList = categoriesDropdown.getOptions();
-        if (locationsList.size() == 6) {
-            logicValue = true;
-        } else {
-            System.out.println("number of locations is " + locationsList.size());
-        }
-        return logicValue;
+        return (locationsList.size() == NUMBER_OF_LOCATIONS);
     }
 
     public boolean isNumberOfSilesiaFuelBasesCorrect() {
-        boolean logicValue = false;
-        List<WebElement> listOfLocationsFiltered = driver.findElements(By.cssSelector("#baza_paliw >g[id^='Baza']:not([style$='display: none;'])"));
-        if (listOfLocationsFiltered.size() == 4) {
-            logicValue = true;
-        } else {
-            System.out.println("number of elements is " + listOfLocationsFiltered.size());
-        }
-        return logicValue;
+        List<WebElement> listOfLocationsFiltered = driver.findElements(By.cssSelector(ALL_FUELBASES_CLICKABLE_SELECTOR));
+        return (listOfLocationsFiltered.size() == NUMBER_OF_SILESIA_FUEL_BASES);
     }
 
     public boolean isNumberOfOilBasesInPolandCorrect() {
-        boolean logicValue = false;
-        List<WebElement> listOfOilBases = driver.findElements(By.cssSelector("#magazyny_ropy_naftowej >:not([style$='display: none;']"));
-        if (listOfOilBases.size() == 3) {
-            logicValue = true;
-        } else {
-            System.out.println("number of elements is " + listOfOilBases.size());
-        }
-        return logicValue;
+        List<WebElement> listOfOilBases = driver.findElements(By.cssSelector(ALL_OILBASES_CLICKABLE_SELECTOR));
+        return (listOfOilBases.size() == NUMBER_OF_POLAND_OIL_BASES);
     }
 
+    public String getServicesLinkTextENLanguagePageVersion() {
+        var servicesWebElement = webDriverWait.until(ExpectedConditions.elementToBeClickable(servicesLinkTextENLanguageVersion));
+        return servicesWebElement.getText();
+    }
+
+    public String getServicesLinkTextDELanguagePageVersion() {
+        var servicesWebElement = webDriverWait.until(ExpectedConditions.elementToBeClickable(servicesLinkTextDELanguageVersion));
+        return servicesWebElement.getText();
+    }
 
 }

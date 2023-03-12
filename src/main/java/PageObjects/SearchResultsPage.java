@@ -8,16 +8,15 @@ import java.time.Duration;
 
 public class SearchResultsPage extends BasePage {
 
-    private final HeaderPage headerPage;
-    private final FooterPage footerPage;
+    private final HeaderSection headerSection;
+    private final FooterSection footerSection;
     private final WebDriverWait webDriverWait;
-
-    private final By resulstCounter = By.cssSelector("[class='row search_options']>div:not([class$='text-right'])");
+    private final By resulstCounter = By.cssSelector("div[class='col-lg-6 col-sm-12']");
 
     public SearchResultsPage(WebDriver driver) {
         super(driver);
-        headerPage = new HeaderPage(driver);
-        footerPage = new FooterPage(driver);
+        headerSection = new HeaderSection(driver);
+        footerSection = new FooterSection(driver);
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(2));
     }
 

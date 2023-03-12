@@ -1,8 +1,32 @@
-This tests are prepared to execute and maintain test connected with pern.pl website. Using this script user can find out if basic functionalities work properly
-To prepare environment for work the pom file must be appropriate configured as below:
+# Project description:
 
+This project is prepared to execute and maintain tests connected with pern.pl website. Using this script user can find out if basic functionalities work properly. It contains UI and also some API tests as well. The following features of PERN website are covered by tests as below:
+<ol>
+<li>Functional tests of basic functionalities:
+<ul>
+<li>searching phrases</li>
+<li>displaying maps and elements</li>
+<li>switching between modules</li>
+<li>switching language version</li>
+<li>displaying correct data and number of elements in dropDown's</li>
+<li>fdfdgd</li>
+</ul>
+</li>
+<li>API tests:</li>
+<ul>
+<li>checking server response for selected modules displayed</li>
+</ul>
+</ol>
+
+# Requirements:
+
+It is required to add some dependencies to pom.xml file and install:
+</br> <ol><li>***Oracle OpenJDK version 18.0.2***</li><li>***IntelliJ IDEA 2022.2.1***</li></ol>
+
+
+```java
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 <modelVersion>4.0.0</modelVersion>
 <groupId>org.example</groupId>
 <artifactId>pierwszyProjekt</artifactId>
@@ -60,3 +84,36 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 <finalName>pierwszyProjekt</finalName>
 </build>
 </project>
+```
+# Some part's of the code below:
+#### Setting TEST_DATA_LOCATION: 
+```java
+public class BaseAPITest {
+    protected static TestDataReader testDataReader;
+    private final static String TEST_DATA_LOCATION = "src/configs/Configuration.properties";
+
+    @BeforeAll
+    public static void loadConfig() throws IOException {
+        Properties properties = new Properties();
+        properties.load(new InputStreamReader(new FileInputStream(TEST_DATA_LOCATION), StandardCharsets.UTF_8));
+        testDataReader = new TestDataReader(TEST_DATA_LOCATION, new Section(properties), 
+                new Strings(properties), new Strings(properties), new Strings(properties), new Section(properties));
+    }
+}
+```
+#### Some UI tests:
+```java
+@Test
+    public void goToLaboratoryPageAndCheckDieselFlashPointValue() {
+        // Given
+        mainPage.scrollToServicesTitle().goToLaboratoryServicesPage();
+        laboratoryServicesPage.goToFuelsAndBiocomponentsRequirementsPage();
+        assertEquals(testDataReader.getSection().getLaboratorySectionURL(), driver.getCurrentUrl());
+
+        // When
+        fuelsAndBiocomponentsRequirementsPage.clickOnDieseBtn().scrollToFlashPointTableValue();
+
+        // Then
+        assertTrue(fuelsAndBiocomponentsRequirementsPage.isFlashPointCorrect());
+    }
+```

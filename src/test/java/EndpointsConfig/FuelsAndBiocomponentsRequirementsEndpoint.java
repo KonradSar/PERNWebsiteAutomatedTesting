@@ -1,6 +1,7 @@
 package EndpointsConfig;
 
 import io.restassured.response.Response;
+
 import static io.restassured.RestAssured.get;
 
 public class FuelsAndBiocomponentsRequirementsEndpoint extends BasicEndpointConfiguration {

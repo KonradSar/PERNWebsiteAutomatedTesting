@@ -1,7 +1,8 @@
 package POMTests;
 
+import Utils.Http;
+import Utils.Phrase;
 import Utils.Section;
-import Utils.Strings;
 import Utils.TestDataReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -9,6 +10,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,19 +24,22 @@ public class BaseTest {
     protected static TestDataReader testDataReader;
     private final static String TEST_DATA_LOCATION = "src/configs/Configuration.properties";
 
-
     @BeforeAll
     public static void loadConfig() throws IOException {
         Properties properties = new Properties();
         properties.load(new InputStreamReader(new FileInputStream(TEST_DATA_LOCATION), StandardCharsets.UTF_8));
         baseURL = properties.getProperty("baseURL");
-        testDataReader = new TestDataReader(TEST_DATA_LOCATION, new Section(properties), new Strings(properties), new Strings(properties), new Strings(properties), new Section(properties));
+        testDataReader = new TestDataReader(TEST_DATA_LOCATION, new Section(properties), new Http(properties),
+                new Http(properties), new Phrase(properties), new Section(properties), new Http(properties),
+        new Phrase(properties));
     }
 
     @BeforeEach
     public void driverSetup() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.navigate().to(baseURL);
     }

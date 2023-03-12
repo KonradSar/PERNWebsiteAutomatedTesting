@@ -8,16 +8,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class BasesLocationDetailsPage extends BasePage {
-    private final HeaderPage headerPage;
-    private final FooterPage footerPage;
+    private final HeaderSection headerSection;
+    private final FooterSection footerSection;
     private final WebDriverWait webDriverWait;
-
     private final By koluszkiBaseBanner = By.cssSelector(".tytul-obiekt");
 
     public BasesLocationDetailsPage(WebDriver driver) {
         super(driver);
-        headerPage = new HeaderPage(driver);
-        footerPage = new FooterPage(driver);
+        headerSection = new HeaderSection(driver);
+        footerSection = new FooterSection(driver);
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(2));
     }
 

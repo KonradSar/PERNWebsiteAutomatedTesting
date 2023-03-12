@@ -5,55 +5,51 @@ import java.util.Properties;
 public class TestDataReader extends FileReader {
 
     private Properties properties;
-    private Section baseLocation;
+    private Section mainViewURLValue;
     private final String testDataLocation;
-    private Strings pernAddressValue;
-    private Strings youTubeURLValue;
-    private final Strings searchSafetyPhrase;
+    private Http pernAddressInputValue;
+    private Http youTubeURLValue;
+
+    private Http linkedInURLValue;
+    private Phrase mainPageSearchExpression;
     private final Section mainPageViewURL;
 
-    public TestDataReader(String testDataLocation, Section baseLocation, Strings pernAddressInputValue, Strings youTubeURLValue, Strings searchSafetyPhrase, Section mainPageViewURL) {
+    private final Phrase mainPageSearchValue;
+
+    public TestDataReader(String testDataLocation, Section baseLocation, Http pernAddressInputValue, Http youTubeURLValue, Phrase searchSafetyPhrase, Section mainPageViewURL, Http linkedInURLValue, Phrase mainPageSearchValue) {
         super(testDataLocation);
         this.testDataLocation = testDataLocation;
-        this.baseLocation = baseLocation;
-        this.pernAddressValue = pernAddressInputValue;
+        this.mainViewURLValue = baseLocation;
+        this.pernAddressInputValue = pernAddressInputValue;
         this.youTubeURLValue = youTubeURLValue;
-        this.searchSafetyPhrase = searchSafetyPhrase;
+        this.mainPageSearchExpression = searchSafetyPhrase;
         this.mainPageViewURL = mainPageViewURL;
+        this.linkedInURLValue = linkedInURLValue;
+        this.mainPageSearchValue = mainPageSearchValue;
     }
 
-    @Override
-    void loadData() {
+    public Section getMainSectionURL() {
+        return mainViewURLValue;
     }
 
-    public void loadData(Properties properties) {
-        baseLocation = new Section(properties);
-        pernAddressValue = new Strings(properties);
-        youTubeURLValue = new Strings(properties);
+    public Http getPernAddressInputValue() {
+        return pernAddressInputValue;
     }
 
-    public String getTestDataLocation() {
-        return testDataLocation;
-    }
-
-    public Section getSection() {
-        return baseLocation;
-    }
-
-    public Strings getPernAddressInputValue() {
-        return pernAddressValue;
-    }
-
-    public Strings getYouTubeURLValue() {
+    public Http getYouTubeURLValue() {
         return youTubeURLValue;
     }
 
-    public Strings getSearchSafetyPhrase() {
-        return searchSafetyPhrase;
+    public Phrase getMainPageSearchExpression() {
+        return mainPageSearchExpression;
     }
 
-    public Section getMainPageViewURL() {
-        return mainPageViewURL;
+    public Http getLinkedInURLValue() {
+        return linkedInURLValue;
+    }
+
+    public Phrase getMainPageSearchValue() {
+        return mainPageSearchValue;
     }
 }
 

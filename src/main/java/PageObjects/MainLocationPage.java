@@ -15,7 +15,7 @@ public class MainLocationPage extends BasePage {
 
     public MainLocationPage(WebDriver driver) {
         super(driver);
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(4));
     }
 
     public MainLocationPage clickOnNavigateBtn() {
@@ -23,5 +23,4 @@ public class MainLocationPage extends BasePage {
         oilServicesTab.click();
         return new MainLocationPage(driver);
     }
-
 }

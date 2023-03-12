@@ -5,24 +5,24 @@ import java.util.Properties;
 public class Section {
     private final String laboratorySectionURL;
     private final String mainLocationSectionURL;
-    private final String mainPageViewURL;
+    private final String mainSectionURL;
 
 
     public Section(Properties properties) {
-        laboratorySectionURL = properties.getProperty("section.sectionLaboratoryURL");
-        mainLocationSectionURL = properties.getProperty("section.sectionMainLocationURL");
-        mainPageViewURL = properties.getProperty("section.sectionMainPageURL");
+        laboratorySectionURL = properties.getProperty("baseURL") + properties.getProperty("section.sectionLaboratoryURL");
+        mainLocationSectionURL = properties.getProperty("baseURL") + properties.getProperty("section.sectionMainLocationURL");
+        mainSectionURL = properties.getProperty("baseURL");
     }
 
-    public String getLaboratorySectionURL() {
+    public String getLaboratoryURL() {
         return laboratorySectionURL;
     }
 
-    public String getMainLocationSectionURL() {
+    public String getMainLocationURL() {
         return mainLocationSectionURL;
     }
 
-    public String getMainPageViewURL() {
-        return mainPageViewURL;
+    public String getMainSectionURL() {
+        return mainSectionURL;
     }
 }

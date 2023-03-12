@@ -1,9 +1,11 @@
 package POMTests;
 
+import Utils.Http;
+import Utils.Phrase;
 import Utils.Section;
-import Utils.Strings;
 import Utils.TestDataReader;
 import org.junit.jupiter.api.BeforeAll;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,6 +20,8 @@ public class BaseAPITest {
     public static void loadConfig() throws IOException {
         Properties properties = new Properties();
         properties.load(new InputStreamReader(new FileInputStream(TEST_DATA_LOCATION), StandardCharsets.UTF_8));
-        testDataReader = new TestDataReader(TEST_DATA_LOCATION, new Section(properties), new Strings(properties), new Strings(properties), new Strings(properties), new Section(properties));
+        testDataReader = new TestDataReader(TEST_DATA_LOCATION, new Section(properties),
+                new Http(properties), new Http(properties), new Phrase(properties), new Section(properties),
+                new Http(properties), new Phrase(properties));
     }
 }

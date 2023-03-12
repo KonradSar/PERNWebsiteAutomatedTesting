@@ -10,7 +10,6 @@ public abstract class FileReader {
 
     protected FileReader(String fileLocation) {
         loadFile(fileLocation);
-        loadData();
     }
 
     @SneakyThrows
@@ -18,6 +17,4 @@ public abstract class FileReader {
         properties = new Properties();
         properties.load(new FileInputStream(fileLocation));
     }
-
-    abstract void loadData();
 }
