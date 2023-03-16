@@ -13,7 +13,6 @@ import static junit.framework.Assert.assertTrue;
 public class FooterTests extends BaseTest {
     FooterSection footerSection;
     CookiesSection cookiesSection;
-
     PrivacyPolicySection privacyPolicySection;
 
     @BeforeEach
@@ -30,7 +29,7 @@ public class FooterTests extends BaseTest {
         cookiesSection.closeYouTubeCookiesBtn();
 
         // Then
-        assertEquals(testDataReader.getYouTubeURLValue().getYouTubeURL(), driver.getCurrentUrl());
+        assertEquals(testDataReader.getYouTubeAddress().getYouTubeURL(), driver.getCurrentUrl());
     }
 
     @Test
@@ -41,6 +40,6 @@ public class FooterTests extends BaseTest {
         privacyPolicySection.closeLinkedINPrivacyPolicyView();
 
         // Then
-        assertTrue(driver.getCurrentUrl().contains(testDataReader.getLinkedInURLValue().getLinkedInURL()));
+        assertTrue(driver.getCurrentUrl().contains(testDataReader.getLinkedInAddress().getLinkedInURL()));
     }
 }

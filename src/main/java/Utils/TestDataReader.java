@@ -1,55 +1,51 @@
 package Utils;
 
-import java.util.Properties;
 
 public class TestDataReader extends FileReader {
 
-    private Properties properties;
-    private Section mainViewURLValue;
+    private Section sectionAddress;
     private final String testDataLocation;
-    private Http pernAddressInputValue;
-    private Http youTubeURLValue;
-
-    private Http linkedInURLValue;
+    private Http googleMapsAddress;
+    private Http youTubeAddress;
+    private Http linkedInAddress;
     private Phrase mainPageSearchExpression;
-    private final Section mainPageViewURL;
-
+    private final Http twitterAddress;
     private final Phrase mainPageSearchValue;
 
-    public TestDataReader(String testDataLocation, Section baseLocation, Http pernAddressInputValue, Http youTubeURLValue, Phrase searchSafetyPhrase, Section mainPageViewURL, Http linkedInURLValue, Phrase mainPageSearchValue) {
+    public TestDataReader(String testDataLocation, Section sectionAddress, Http googleMapsAddress,
+                          Http youTubeAddress, Phrase searchSafetyPhrase, Http linkedInAddress,
+                          Phrase mainPageSearchValue, Http twitterAddress) {
         super(testDataLocation);
         this.testDataLocation = testDataLocation;
-        this.mainViewURLValue = baseLocation;
-        this.pernAddressInputValue = pernAddressInputValue;
-        this.youTubeURLValue = youTubeURLValue;
+        this.sectionAddress = sectionAddress;
+        this.googleMapsAddress = googleMapsAddress;
+        this.youTubeAddress = youTubeAddress;
         this.mainPageSearchExpression = searchSafetyPhrase;
-        this.mainPageViewURL = mainPageViewURL;
-        this.linkedInURLValue = linkedInURLValue;
+        this.linkedInAddress = linkedInAddress;
         this.mainPageSearchValue = mainPageSearchValue;
+        this.twitterAddress = twitterAddress;
     }
 
-    public Section getMainSectionURL() {
-        return mainViewURLValue;
+    public Section getSectionAddress() {return sectionAddress;}
+
+    public Http getGoogleMapsAddress() {
+        return googleMapsAddress;
     }
 
-    public Http getPernAddressInputValue() {
-        return pernAddressInputValue;
-    }
-
-    public Http getYouTubeURLValue() {
-        return youTubeURLValue;
+    public Http getYouTubeAddress() {
+        return youTubeAddress;
     }
 
     public Phrase getMainPageSearchExpression() {
         return mainPageSearchExpression;
     }
 
-    public Http getLinkedInURLValue() {
-        return linkedInURLValue;
+    public Http getLinkedInAddress() {
+        return linkedInAddress;
     }
 
-    public Phrase getMainPageSearchValue() {
-        return mainPageSearchValue;
-    }
+    public Phrase getMainPageSearchValue() {return mainPageSearchValue;}
+
+    public Http getTwitterAddress() {return twitterAddress;}
 }
 

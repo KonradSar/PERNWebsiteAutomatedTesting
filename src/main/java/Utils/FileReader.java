@@ -1,7 +1,6 @@
 package Utils;
 
 import lombok.SneakyThrows;
-
 import java.io.FileInputStream;
 import java.util.Properties;
 

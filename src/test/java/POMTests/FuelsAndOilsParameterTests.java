@@ -26,7 +26,7 @@ public class FuelsAndOilsParameterTests extends BaseTest {
         // Given
         mainPage.scrollToServicesTitle().goToLaboratoryServicesPage();
         laboratoryServicesPage.goToFuelsAndBiocomponentsRequirementsPage();
-        assertEquals(testDataReader.getMainSectionURL().getLaboratoryURL(), driver.getCurrentUrl());
+        assertEquals(testDataReader.getSectionAddress().getLaboratorySectionURL(), driver.getCurrentUrl());
 
         // When
         fuelsAndBiocomponentsRequirementsPage.clickOnDieseBtn().scrollToFlashPointTableValue();

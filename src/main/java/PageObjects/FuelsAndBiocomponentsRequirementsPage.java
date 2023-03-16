@@ -17,7 +17,6 @@ public class FuelsAndBiocomponentsRequirementsPage extends BasePage {
     private final By flashPointTableValue = By.cssSelector("#collapse2 .panel-body table tr:nth-of-type(8)");
     private final By temperatueValueRow = By.cssSelector("#collapse2 .panel-body table tr:nth-of-type(8)>td:nth-child(2)");
 
-
     public FuelsAndBiocomponentsRequirementsPage(WebDriver driver) {
         super(driver);
         headerSection = new HeaderSection(driver);

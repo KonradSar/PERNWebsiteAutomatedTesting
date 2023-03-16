@@ -8,11 +8,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class CookiesSection {
+
     protected WebDriver driver;
 
     protected WebDriverWait webDriverWait;
     protected By rejectCookiesBtn = By.xpath(".//div[@class='VtwTSb']/form[1]");
-
     protected By closeCookiesBtn = By.cssSelector(".contextual-sign-in-modal__modal-dismiss");
 
     public CookiesSection(WebDriver driver) {

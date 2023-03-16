@@ -21,7 +21,6 @@ public class BaseAPITest {
         Properties properties = new Properties();
         properties.load(new InputStreamReader(new FileInputStream(TEST_DATA_LOCATION), StandardCharsets.UTF_8));
         testDataReader = new TestDataReader(TEST_DATA_LOCATION, new Section(properties),
-                new Http(properties), new Http(properties), new Phrase(properties), new Section(properties),
-                new Http(properties), new Phrase(properties));
+                new Http(properties), new Http(properties), new Phrase(properties), new Http(properties), new Phrase(properties), new Http(properties));
     }
 }

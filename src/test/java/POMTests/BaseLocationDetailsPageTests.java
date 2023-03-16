@@ -37,11 +37,11 @@ public class BaseLocationDetailsPageTests extends BaseTest {
     public void When_NavigateToButtonIsClicked_Expect_GoogleMapsPageWithAddressValueIsDisplayed() {
         // When
         mainPage.scrollToBottomMap().clickOnPlockLocation();
-        Assertions.assertEquals(testDataReader.getMainSectionURL().getMainLocationURL(), driver.getCurrentUrl());
+        Assertions.assertEquals(testDataReader.getSectionAddress().getMainLocationSectionURL(), driver.getCurrentUrl());
         mainLocationPage.clickOnNavigateBtn();
         cookiesSection.closeYouTubeCookiesBtn();
 
         // Then
-        assertTrue(googleMapsPage.getSearchInputValue().contains(testDataReader.getPernAddressInputValue().getAddress()));
+        assertTrue(googleMapsPage.getSearchInputValue().contains(testDataReader.getGoogleMapsAddress().getGoogleMapsURL()));
     }
 }

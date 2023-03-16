@@ -34,5 +34,4 @@ public class LocationsMapTests extends BaseTest {
         // Then
         assertTrue(mainPage.isNumberOfOilBasesInPolandCorrect());
     }
-
 }

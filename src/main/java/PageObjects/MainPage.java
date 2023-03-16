@@ -17,40 +17,26 @@ public class MainPage extends BasePage {
     private final HeaderSection headerSection;
     private final FooterSection footerSection;
     private final WebDriverWait webDriverWait;
-
     private final static int NUMBER_OF_SILESIA_FUEL_BASES = 4;
     private final static int NUMBER_OF_LOCATIONS = 6;
     private final static int NUMBER_OF_POLAND_OIL_BASES = 3;
     private final static int REGIONS_RANGE = 17;
-
     private final static String ALL_FUELBASES_CLICKABLE_SELECTOR = "#baza_paliw >g[id^='Baza']:not([style$='display: none;'])";
-
     private final static String ALL_OILBASES_CLICKABLE_SELECTOR = "#magazyny_ropy_naftowej >:not([style$='display: none;']";
-
     private final By pernFuelsTab = By.xpath(".//div[contains(@class, 'p-uslugi-wrapper')]//a[@href= 'https://www.pern.pl/uslugi/paliwa/']");
-
     private final By laboratoryTab = By.cssSelector(".animation a:nth-child(3)");
-
     private final By servicesSectionTitle = By.cssSelector(".section__title");
-
     protected final By servicesLinkTextENLanguageVersion = By.cssSelector("#menu-item-25948>a");
-
     protected final By servicesLinkTextDELanguageVersion = By.cssSelector("#menu-item-25924");
-
     public final By map = By.cssSelector(".locations-list li:nth-child(1)");
-
     private final By plockLocation = By.cssSelector("#siedziba_Mazowieckie_siedziba_spółki circle");
-
     private final By plockLabel = By.cssSelector(".locations-map-list__single--active div a");
     private final By dropDownMenuRegions = By.cssSelector("#regions");
-
     private final By dropDownMenuTypeOfLocations = By.cssSelector("#locations");
     private final By searchGreenBtn = By.cssSelector(".green-button--second");
-
     private final By changeLanguageBtn = By.cssSelector(".language-switcher");
     private final By languageSwitcher = By.cssSelector("div.language-switcher--active");
     private final By englishLanguageBtn = By.cssSelector(".language-switcher li:nth-child(1)");
-
     private final By deutschLanguageBtn = By.cssSelector(".language-switcher li:nth-child(2)");
 
     public MainPage(WebDriver driver) {
@@ -64,7 +50,6 @@ public class MainPage extends BasePage {
         var liquidFuelsTab = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(pernFuelsTab));
         liquidFuelsTab.click();
         return new FuelServicesPage(driver);
-
     }
 
     public MainPage scrollToServicesTitle() {
@@ -120,7 +105,6 @@ public class MainPage extends BasePage {
         Actions actions = new Actions(driver);
         actions.moveToElement(laboratoryTabb).click().build().perform();
         return new LaboratoryServicesPage(driver);
-
     }
 
     public boolean isRegionsRangeInDropDownCorrect() {
@@ -156,5 +140,4 @@ public class MainPage extends BasePage {
         var servicesWebElement = webDriverWait.until(ExpectedConditions.elementToBeClickable(servicesLinkTextDELanguageVersion));
         return servicesWebElement.getText();
     }
-
 }
