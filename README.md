@@ -1,6 +1,8 @@
 # Project description:
 
-This project is prepared to execute and maintain tests connected with pern.pl website. Using this script user can find out if basic functionalities work properly. It contains UI and also some API tests as well. The following features of PERN website are covered by tests as below:
+This project is prepared to execute and maintain tests connected with pern.pl website. Using this script user can find
+out if basic functionalities work properly. It contains UI and also some API tests as well. The following features of
+PERN website are covered by tests as below:
 <ol>
 <li>Functional tests of basic functionalities:
 <ul>
@@ -22,7 +24,6 @@ This project is prepared to execute and maintain tests connected with pern.pl we
 
 It is required to add some dependencies to pom.xml file and install:
 </br> <ol><li>***Oracle OpenJDK version 18.0.2***</li><li>***IntelliJ IDEA 2022.2.1***</li></ol>
-
 
 ```java
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -85,8 +86,11 @@ It is required to add some dependencies to pom.xml file and install:
 </build>
 </project>
 ```
+
 # Some part's of the code below:
-#### Setting TEST_DATA_LOCATION: 
+
+#### Setting TEST_DATA_LOCATION:
+
 ```java
 public class BaseAPITest {
     protected static TestDataReader testDataReader;
@@ -101,7 +105,9 @@ public class BaseAPITest {
     }
 }
 ```
+
 #### Some UI tests:
+
 ```java
 @Test
     public void goToLaboratoryPageAndCheckDieselFlashPointValue() {

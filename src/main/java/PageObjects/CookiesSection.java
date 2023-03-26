@@ -25,7 +25,8 @@ public class CookiesSection {
         driver.findElement(rejectCookiesBtn).click();
         return new CookiesSection(driver);
     }
-    public CookiesSection closeLinkedInCookiesBtn(){
+
+    public CookiesSection closeLinkedInCookiesBtn() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(closeCookiesBtn));
         driver.findElement(closeCookiesBtn).click();
         return new CookiesSection(driver);

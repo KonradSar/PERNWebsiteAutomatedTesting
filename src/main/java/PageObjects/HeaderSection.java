@@ -12,6 +12,7 @@ import java.time.Duration;
 public class HeaderSection extends BasePage {
     private final WebDriverWait webDriverWait;
     private final By activeSearchInput = By.cssSelector("input.search-modal__input");
+
     public HeaderSection(WebDriver driver) {
         super(driver);
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(4));

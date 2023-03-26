@@ -37,7 +37,7 @@ public class SearchTests extends BaseTest {
         headerSection.openTabElement(HeaderTab.SEARCH_BTN);
 
         // When
-        headerSection.searchInSomeText(testDataReader.getMainPageSearchValue().getWrongSearchValue());
+        headerSection.searchInSomeText(testDataReader.getMainPageSearchExpression().getWrongSearchValue());
 
         // Then
         assertFalse(searchResultsPage.isAnyResultNumber());

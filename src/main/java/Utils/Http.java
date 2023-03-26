@@ -21,7 +21,9 @@ public class Http {
         return pernAddressValue;
     }
 
-    public String getTwitterURL() {return twitterURL;}
+    public String getTwitterURL() {
+        return twitterURL;
+    }
 
     public String getYouTubeURL() {
         return youTubeURL;
