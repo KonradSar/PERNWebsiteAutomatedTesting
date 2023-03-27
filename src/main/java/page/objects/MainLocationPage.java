@@ -10,6 +10,7 @@ import java.time.Duration;
 public class MainLocationPage extends BasePage {
     private final By navigateBtn = By.cssSelector("a.nawigacja-obiekt");
     private final WebDriverWait webDriverWait;
+
     public MainLocationPage(WebDriver driver) {
         super(driver);
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(4));

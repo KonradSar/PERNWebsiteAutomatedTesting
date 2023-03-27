@@ -13,6 +13,7 @@ public class PrivacyPolicySection {
 
     protected WebDriverWait webDriverWait;
     protected By rejectPolicyPrivacyBtn = By.cssSelector("button[action-type='DENY']");
+
     public PrivacyPolicySection(WebDriver driver) {
         this.driver = driver;
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(2));

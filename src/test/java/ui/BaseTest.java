@@ -31,7 +31,7 @@ public class BaseTest {
         baseURL = properties.getProperty("baseURL");
         testDataReader = new TestDataReader(TEST_DATA_LOCATION, new Section(properties), new Http(properties),
                 new Http(properties), new Phrase(properties), new Http(properties),
-        new Phrase(properties), new Http(properties));
+                new Phrase(properties), new Http(properties));
     }
 
     @BeforeEach

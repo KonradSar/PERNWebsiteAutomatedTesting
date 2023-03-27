@@ -8,6 +8,7 @@ import static junit.framework.Assert.assertTrue;
 
 public class DropDownMenuTests extends BaseTest {
     MainPage mainPage;
+
     @BeforeEach
     public void initializeObjects() {
         mainPage = new MainPage(driver);

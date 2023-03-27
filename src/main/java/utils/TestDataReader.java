@@ -26,7 +26,9 @@ public class TestDataReader extends FileReader {
         this.twitterAddress = twitterAddress;
     }
 
-    public Section getSectionAddress() {return sectionAddress;}
+    public Section getSectionAddress() {
+        return sectionAddress;
+    }
 
     public Http getGoogleMapsAddress() {
         return googleMapsAddress;
@@ -44,8 +46,12 @@ public class TestDataReader extends FileReader {
         return linkedInAddress;
     }
 
-    public Phrase getMainPageSearchValue() {return mainPageSearchValue;}
+    public Phrase getMainPageSearchValue() {
+        return mainPageSearchValue;
+    }
 
-    public Http getTwitterAddress() {return twitterAddress;}
+    public Http getTwitterAddress() {
+        return twitterAddress;
+    }
 }
 

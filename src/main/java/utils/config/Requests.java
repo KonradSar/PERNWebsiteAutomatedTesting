@@ -1,13 +1,19 @@
-package endpoints.config;
+package utils.config;
 
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.get;
 
-public class FuelsAndBiocomponentsRequirementsEndpoint extends BasicEndpointConfiguration {
-    private final String fuelsAndBiocomponentsEndpoint = "uslugi/laboratorium/wymagania-dla-paliw-i-biokomponentow/";
+public class Requests extends BasicEndpointConfiguration {
 
-    public Response openFuelsAndBiocomponentsRequirementsPage() {
+    private final String fuelsAndBiocomponentsEndpoint = "uslugi/laboratorium/wymagania-dla-paliw-i-biokomponentow/";
+    private final String mainPageEndpoint = "";
+
+    public Response getMainPage() {
+        return lastResponse = get(mainPageEndpoint);
+    }
+
+    public Response getFuelsAndBiocomponents() {
         return lastResponse = get(fuelsAndBiocomponentsEndpoint);
     }
 }
