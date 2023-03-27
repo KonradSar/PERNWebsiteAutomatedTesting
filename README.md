@@ -11,7 +11,6 @@ PERN website are covered by tests as below:
 <li>switching between modules</li>
 <li>switching language version</li>
 <li>displaying correct data and number of elements in dropDown's</li>
-<li>fdfdgd</li>
 </ul>
 </li>
 <li>API tests:</li>
