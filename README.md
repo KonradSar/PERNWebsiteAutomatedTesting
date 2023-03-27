@@ -187,6 +187,17 @@ public class BaseAPITest {
         assertTrue(fuelsAndBiocomponentsRequirementsPage.isFlashPointCorrect());
     }
 ```
+#### Some API tests:
+```java
+@Test
+public void When_TwitterIconIsClicked_Expect_TwitterWebPageIsDisplayed() {
+Response response = given()
+.when()
+.get(testDataReader.getTwitterAddress().getTwitterURL());
+System.out.println(response.prettyPrint());
+Assertions.assertEquals(200, response.statusCode());
+}
+```
 
 # How to run some UI/API tests:
 
