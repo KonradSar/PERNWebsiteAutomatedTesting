@@ -16,5 +16,4 @@ public class Requests extends BasicEndpointConfiguration {
     public Response getFuelsAndBiocomponents() {
         return lastResponse = get(fuelsAndBiocomponentsEndpoint);
     }
-    //Test
 }
