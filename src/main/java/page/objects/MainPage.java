@@ -17,7 +17,7 @@ public class MainPage extends BasePage {
     private final HeaderSection headerSection;
     private final FooterSection footerSection;
     private final WebDriverWait webDriverWait;
-    private final static int NUMBER_OF_SILESIA_FUEL_BASES = 4;
+    private final static int NUMBER_OF_SILESIA_FUEL_BASES = 3;
     private final static int NUMBER_OF_LOCATIONS = 6;
     private final static int NUMBER_OF_POLAND_OIL_BASES = 3;
     private final static int REGIONS_RANGE = 17;
