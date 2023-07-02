@@ -4,7 +4,7 @@ This project is prepared to execute and maintain tests connected with pern.pl we
 out if basic functionalities work properly. It contains UI and also some API tests as well. The following features of
 PERN website are covered by tests as below:
 <ol>
-<li>Functional tests of basic functionalities:
+<li>Functional tests of basic functionalities included:
 <ul>
 <li>searching phrases</li>
 <li>displaying maps and elements</li>
@@ -13,7 +13,7 @@ PERN website are covered by tests as below:
 <li>displaying correct data and number of elements in dropDown's</li>
 </ul>
 </li>
-<li>API tests:</li>
+<li>API tests includes:</li>
 <ul>
 <li>checking server response for selected modules displayed</li>
 </ul>
