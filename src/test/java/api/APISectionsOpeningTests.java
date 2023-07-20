@@ -1,10 +1,8 @@
-package POMTests;
+package api;
 
-
-import api.BaseAPITest;
+import utils.config.Requests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import utils.config.Requests;
 
 public class APISectionsOpeningTests extends BaseAPITest {
 
@@ -26,3 +24,15 @@ public class APISectionsOpeningTests extends BaseAPITest {
         Assertions.assertEquals(200, requests.getMainPage().statusCode());
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
